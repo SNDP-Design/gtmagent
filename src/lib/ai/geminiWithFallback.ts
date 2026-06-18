@@ -3,19 +3,12 @@
  * Tries models in order; falls back to the next when a model is exhausted or unavailable.
  *
  * Order:
- *   gemini-3.5-flash → gemini-3.1-pro-preview → gemini-3-flash-preview →
- *   gemini-3.1-flash-lite → gemini-3.1-flash-lite-preview →
  *   gemini-2.5-pro → gemini-2.5-flash → gemini-2.5-flash-lite → gemini-2.0-flash
  */
 
 import { getChatCompletion, getStreamingChatCompletion } from './chatCompletion';
 
 export const GEMINI_FALLBACK_CHAIN = [
-  'gemini/gemini-3.5-flash',
-  'gemini/gemini-3.1-pro-preview',
-  'gemini/gemini-3-flash-preview',
-  'gemini/gemini-3.1-flash-lite',
-  'gemini/gemini-3.1-flash-lite-preview',
   'gemini/gemini-2.5-pro',
   'gemini/gemini-2.5-flash',
   'gemini/gemini-2.5-flash-lite',
