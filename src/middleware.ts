@@ -14,6 +14,12 @@ function injectTokenFromHeader(request: NextRequest): void {
   request.cookies.set(`sb-${getProjectRef()}-auth-token`, token);
 }
 
+// Routes that require authentication
+const PROTECTED_ROUTES: string[] = [];
+
+// Public routes (no auth needed)
+const PUBLIC_ROUTES = ['/', '/auth/callback'];
+
 export async function middleware(request: NextRequest) {
   injectTokenFromHeader(request);
   let supabaseResponse = NextResponse.next({ request });
@@ -36,7 +42,10 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
+  const pathname = request.nextUrl.pathname;
+
+  // No auth redirects — all routes are publicly accessible
 
   return supabaseResponse;
 }

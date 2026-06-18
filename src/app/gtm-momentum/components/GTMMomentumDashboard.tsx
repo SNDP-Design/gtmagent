@@ -16,9 +16,18 @@ import { founderEventService, FounderEvent } from '@/lib/services/founderEventSe
 import Icon from '@/components/ui/AppIcon';
 
 
-const CompletionTimelineInner = dynamic(() => import('./CompletionTimelineInner'), { ssr: false });
-const FeatureFrequencyInner = dynamic(() => import('./FeatureFrequencyInner'), { ssr: false });
-const ActionHeatmapInner = dynamic(() => import('./ActionHeatmapInner'), { ssr: false });
+const CompletionTimelineInner = dynamic(
+  () => import('./CompletionTimelineInner'),
+  { ssr: false, loading: () => <div className="animate-pulse bg-muted rounded-xl" style={{ minHeight: 200 }} /> }
+);
+const FeatureFrequencyInner = dynamic(
+  () => import('./FeatureFrequencyInner'),
+  { ssr: false, loading: () => <div className="animate-pulse bg-muted rounded-xl" style={{ minHeight: 200 }} /> }
+);
+const ActionHeatmapInner = dynamic(
+  () => import('./ActionHeatmapInner'),
+  { ssr: false, loading: () => <div className="animate-pulse bg-muted rounded-xl" style={{ minHeight: 200 }} /> }
+);
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
