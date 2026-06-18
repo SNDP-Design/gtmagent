@@ -6,6 +6,7 @@ import ActivityChart from '../components/ActivityChart';
 import ExperimentResultsChart from '../components/ExperimentResultsChart';
 import MilestoneTracker from '../components/MilestoneTracker';
 import TaskList from '../components/TaskList';
+import StartHereModules from '../components/StartHereModules';
 
 export default function ProgressDashboardPage() {
   return (
@@ -27,10 +28,13 @@ export default function ProgressDashboardPage() {
           </div>
         </div>
 
-        {/* AI Next Action Banner */}
+        {/* AI Next Action Banner — prominent for new users with tour trigger */}
         <NextActionBanner />
 
-        {/* KPI Bento Grid */}
+        {/* Start Here — quick-action module links */}
+        <StartHereModules />
+
+        {/* KPI Bento Grid — GTM Readiness Score highlighted */}
         <KPIBentoGrid />
 
         {/* Charts row */}
