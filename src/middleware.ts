@@ -15,15 +15,7 @@ function injectTokenFromHeader(request: NextRequest): void {
 }
 
 // Routes that require authentication
-const PROTECTED_ROUTES = [
-  '/dashboard',
-  '/ai-strategy-builder',
-  '/icp-channel-finder',
-  '/outreach-copy-generator',
-  '/experiment-tracker',
-  '/gtm-momentum',
-  '/settings',
-];
+const PROTECTED_ROUTES: string[] = [];
 
 // Public routes (no auth needed)
 const PUBLIC_ROUTES = ['/', '/sign-up-login', '/auth/callback'];
@@ -53,16 +45,7 @@ export async function middleware(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
   const pathname = request.nextUrl.pathname;
 
-  // Redirect authenticated users away from sign-in page to dashboard
-  if (user && pathname === '/sign-up-login') {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
-  }
-
-  // Protect app routes — redirect unauthenticated users to sign-in
-  const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
-  if (!user && isProtected) {
-    return NextResponse.redirect(new URL('/sign-up-login', request.url));
-  }
+  // No auth redirects — all routes are publicly accessible
 
   return supabaseResponse;
 }
