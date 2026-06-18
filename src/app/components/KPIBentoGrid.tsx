@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, TrendingDown, FlaskConical, Mail, Target, Calendar, Minus } from 'lucide-react';
+import { TrendingUp, TrendingDown, FlaskConical, Mail, Target, Calendar, Minus, Users } from 'lucide-react';
 import Icon from '@/components/ui/AppIcon';
 
 
@@ -84,6 +84,19 @@ const kpiData = [
     hero: false,
     color: 'warning',
     detail: 'Sprint ends Jul 8',
+  },
+  {
+    id: 'kpi-icp',
+    label: 'ICP Profiles',
+    value: '4',
+    unit: '',
+    trend: '+2',
+    trendUp: true,
+    sub: 'this month',
+    icon: Users,
+    hero: false,
+    color: 'info',
+    detail: '2 high-fit · 2 exploratory',
   },
 ];
 
