@@ -407,46 +407,46 @@ export default function LandingPage() {
               return (
                 <div
                   key={mod?.id}
-                  className={`rounded-2xl bg-card border ${mod?.accentBorder} p-6 flex flex-col gap-4 hover:shadow-lg transition-all duration-300 group`}
+                  className={`rounded-2xl bg-card border ${mod?.accentBorder} p-7 flex flex-col gap-5 hover:shadow-lg transition-all duration-300 group`}
                 >
                   {/* Header */}
-                  <div className="flex items-start gap-3">
-                    <div className={`w-11 h-11 rounded-xl ${mod?.accentBg} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                      <ModIcon size={20} className={mod?.accentText} />
+                  <div className="flex items-start gap-4">
+                    <div className={`w-12 h-12 rounded-xl ${mod?.accentBg} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                      <ModIcon size={22} className={mod?.accentText} />
                     </div>
                     <div className="min-w-0">
-                      <span className={`text-[10px] font-bold uppercase tracking-widest ${mod?.accentText} opacity-60`}>Module {mod?.number}</span>
-                      <h3 className="text-[16px] font-extrabold text-foreground leading-tight">{mod?.title}</h3>
-                      <p className={`text-[11px] font-semibold ${mod?.accentText} mt-0.5`}>{mod?.tagline}</p>
+                      <span className={`text-[11px] font-bold uppercase tracking-widest ${mod?.accentText} opacity-60`}>Module {mod?.number}</span>
+                      <h3 className="text-[18px] font-extrabold text-foreground leading-tight mt-0.5">{mod?.title}</h3>
+                      <p className={`text-[13px] font-semibold ${mod?.accentText} mt-1`}>{mod?.tagline}</p>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-[13px] text-muted-foreground leading-relaxed">{mod?.description}</p>
+                  <p className="text-[15px] text-muted-foreground leading-relaxed">{mod?.description}</p>
 
                   {/* What you get bullets */}
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2.5">
                     {mod?.bullets?.map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-[12px] text-foreground/80">
-                        <CheckCircle size={12} className={`${mod?.accentText} flex-shrink-0 mt-0.5`} />
+                      <li key={b} className="flex items-start gap-2.5 text-[14px] text-foreground/80">
+                        <CheckCircle size={14} className={`${mod?.accentText} flex-shrink-0 mt-0.5`} />
                         {b}
                       </li>
                     ))}
                   </ul>
 
                   {/* Stat widget */}
-                  <div className={`rounded-xl ${mod?.accentBg} border ${mod?.accentBorder} px-4 py-3 flex items-center gap-3`}>
-                    <span className={`text-[26px] font-extrabold leading-none ${mod?.accentText}`}>{mod?.stat}</span>
-                    <span className={`text-[11px] leading-snug ${mod?.accentText} opacity-80`}>{mod?.statLabel}</span>
+                  <div className={`rounded-xl ${mod?.accentBg} border ${mod?.accentBorder} px-4 py-3.5 flex items-center gap-3`}>
+                    <span className={`text-[30px] font-extrabold leading-none ${mod?.accentText}`}>{mod?.stat}</span>
+                    <span className={`text-[13px] leading-snug ${mod?.accentText} opacity-80`}>{mod?.statLabel}</span>
                   </div>
 
                   {/* CTA */}
                   <Link
                     href={mod?.href}
-                    className={`inline-flex items-center gap-1 text-[12px] font-semibold ${mod?.accentText} hover:opacity-70 transition-opacity mt-auto`}
+                    className={`inline-flex items-center gap-1.5 text-[14px] font-semibold ${mod?.accentText} hover:opacity-70 transition-opacity mt-auto`}
                   >
                     Try {mod?.title}
-                    <ChevronRight size={13} />
+                    <ChevronRight size={14} />
                   </Link>
                 </div>
               );
