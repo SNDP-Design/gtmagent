@@ -26,7 +26,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Progress Dashboard', href: '/', icon: LayoutDashboard },
+  { label: 'Progress Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { label: 'AI Strategy Builder', href: '/ai-strategy-builder', icon: Sparkles, badge: 1 },
   { label: 'ICP & Channel Finder', href: '/icp-channel-finder', icon: Users },
   { label: 'Outreach Copy Generator', href: '/outreach-copy-generator', icon: Mail },

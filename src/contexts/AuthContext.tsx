@@ -1,4 +1,3 @@
-
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -40,24 +39,36 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return () => subscription.unsubscribe();
   }, []);
 
-  // Email/Password Sign Up
+  // Google OAuth Sign In
+  const signInWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      },
+    });
+    if (error) throw error;
+    return data;
+  };
+
+  // Email/Password Sign Up (kept for backward compatibility)
   const signUp = async (email: string, password: string, metadata = {}) => {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: {
-          full_name: metadata?.fullName || '',
-          avatar_url: metadata?.avatarUrl || ''
+          full_name: (metadata as any)?.fullName || '',
+          avatar_url: (metadata as any)?.avatarUrl || ''
         },
-        emailRedirectTo: `${window.location.origin}/auth/callback`
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`
       }
     });
     if (error) throw error;
     return data;
   };
 
-  // Email/Password Sign In
+  // Email/Password Sign In (kept for backward compatibility)
   const signIn = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
@@ -103,6 +114,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     loading,
     signUp,
     signIn,
+    signInWithGoogle,
     signOut,
     getCurrentUser,
     isEmailVerified,
