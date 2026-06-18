@@ -82,11 +82,13 @@ const modules = [
     icon: Lightbulb,
     title: 'AI Strategy Builder',
     tagline: 'Full GTM strategy in under 10 minutes.',
+    description: 'Answer a short intake form and GTM Fox generates a complete go-to-market strategy — positioning, messaging, target segments, and a prioritised 90-day action plan.',
     accent: '#7C6FFF',
     accentBg: 'bg-primary/10',
     accentText: 'text-primary',
     accentBorder: 'border-primary/30',
     chips: ['Positioning framework', '90-day action plan', 'Exportable strategy doc'],
+    bullets: ['AI-generated positioning & messaging', 'Prioritised 90-day action plan', 'Export to PDF or share with your team'],
     stat: '3×',
     statLabel: 'more likely to hit first revenue milestone',
     href: '/ai-strategy-builder',
@@ -97,11 +99,13 @@ const modules = [
     icon: Search,
     title: 'ICP & Channel Finder',
     tagline: 'Stop selling to everyone. Sell to the right ones.',
+    description: 'Define your ideal customer profile with AI assistance, then get a ranked list of channels scored by fit — so you focus budget and effort where it actually converts.',
     accent: '#F97316',
     accentBg: 'bg-accent/10',
     accentText: 'text-accent',
     accentBorder: 'border-accent/30',
     chips: ['Ideal customer profile', 'Channel fit scores', 'Radar chart view'],
+    bullets: ['Detailed ICP with firmographics & pain points', 'Channel fit scores (LinkedIn, email, events…)', 'Visual radar chart for quick comparison'],
     stat: '4×',
     statLabel: 'better reply rates vs. broad targeting',
     href: '/icp-channel-finder',
@@ -112,11 +116,13 @@ const modules = [
     icon: PenLine,
     title: 'Outreach Copy Generator',
     tagline: 'Write outreach that actually gets replies.',
+    description: 'Generate cold emails, LinkedIn DMs, and follow-up sequences in your brand voice. Get three variants per request so you can A/B test without starting from scratch.',
     accent: '#34D399',
     accentBg: 'bg-positive/10',
     accentText: 'text-positive',
     accentBorder: 'border-positive/30',
     chips: ['Cold email sequences', 'LinkedIn DMs', '3 variants per request'],
+    bullets: ['Cold email, LinkedIn DM & follow-up formats', '3 copy variants per generation', 'Saved history for reuse & iteration'],
     stat: '18%',
     statLabel: 'avg. reply rate vs. 2–4% industry norm',
     href: '/outreach-copy-generator',
@@ -127,11 +133,13 @@ const modules = [
     icon: TestTube2,
     title: 'Experiment Tracker',
     tagline: 'Run GTM experiments like a scientist.',
+    description: 'Log hypotheses, track results, and measure ROI across every channel test. See what\'s working at a glance and double down on winners before budget runs out.',
     accent: '#60A5FA',
     accentBg: 'bg-info/10',
     accentText: 'text-info',
     accentBorder: 'border-info/30',
     chips: ['Hypothesis logging', 'ROI & cost-per-reply', 'PDF / CSV export'],
+    bullets: ['Structured hypothesis & result logging', 'ROI, cost-per-reply & conversion metrics', 'Export reports as PDF or CSV'],
     stat: '2×',
     statLabel: 'faster to find best-performing channel',
     href: '/experiment-tracker',
@@ -142,11 +150,13 @@ const modules = [
     icon: Activity,
     title: 'Progress Dashboard',
     tagline: 'Your entire GTM motion in one view.',
+    description: 'Track your GTM Readiness Score, milestone progress, and AI-recommended next actions — all updated in real time as you complete work across the other four modules.',
     accent: '#7C6FFF',
     accentBg: 'bg-primary/10',
     accentText: 'text-primary',
     accentBorder: 'border-primary/30',
     chips: ['Live GTM Score', 'Milestone tracker', 'AI next-action feed'],
+    bullets: ['Live GTM Readiness Score (0–100)', 'Milestone tracker with completion timeline', 'AI-powered next-best-action recommendations'],
     stat: '60%',
     statLabel: 'more likely to hit 90-day milestones',
     href: '/gtm-momentum',
@@ -397,36 +407,36 @@ export default function LandingPage() {
               return (
                 <div
                   key={mod?.id}
-                  className={`rounded-2xl bg-card border ${mod?.accentBorder} p-6 flex flex-col gap-5 hover:shadow-lg transition-all duration-300 group`}
+                  className={`rounded-2xl bg-card border ${mod?.accentBorder} p-6 flex flex-col gap-4 hover:shadow-lg transition-all duration-300 group`}
                 >
                   {/* Header */}
-                  <div className="flex items-start gap-4">
-                    <div className={`w-11 h-11 rounded-xl ${mod?.accentBg} flex items-center justify-center flex-shrink-0`}>
+                  <div className="flex items-start gap-3">
+                    <div className={`w-11 h-11 rounded-xl ${mod?.accentBg} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                       <ModIcon size={20} className={mod?.accentText} />
                     </div>
                     <div className="min-w-0">
                       <span className={`text-[10px] font-bold uppercase tracking-widest ${mod?.accentText} opacity-60`}>Module {mod?.number}</span>
                       <h3 className="text-[16px] font-extrabold text-foreground leading-tight">{mod?.title}</h3>
-                      <p className="text-[12px] text-muted-foreground mt-0.5">{mod?.tagline}</p>
+                      <p className={`text-[11px] font-semibold ${mod?.accentText} mt-0.5`}>{mod?.tagline}</p>
                     </div>
                   </div>
 
-                  {/* Feature chips */}
-                  <div className="flex flex-wrap gap-2">
-                    {mod?.chips?.map((chip) => (
-                      <span
-                        key={chip}
-                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${mod?.accentBg} ${mod?.accentText} text-[11px] font-semibold border ${mod?.accentBorder}`}
-                      >
-                        <CheckCircle size={10} />
-                        {chip}
-                      </span>
+                  {/* Description */}
+                  <p className="text-[13px] text-muted-foreground leading-relaxed">{mod?.description}</p>
+
+                  {/* What you get bullets */}
+                  <ul className="space-y-1.5">
+                    {mod?.bullets?.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-[12px] text-foreground/80">
+                        <CheckCircle size={12} className={`${mod?.accentText} flex-shrink-0 mt-0.5`} />
+                        {b}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
                   {/* Stat widget */}
                   <div className={`rounded-xl ${mod?.accentBg} border ${mod?.accentBorder} px-4 py-3 flex items-center gap-3`}>
-                    <span className={`text-[28px] font-extrabold leading-none ${mod?.accentText}`}>{mod?.stat}</span>
+                    <span className={`text-[26px] font-extrabold leading-none ${mod?.accentText}`}>{mod?.stat}</span>
                     <span className={`text-[11px] leading-snug ${mod?.accentText} opacity-80`}>{mod?.statLabel}</span>
                   </div>
 
