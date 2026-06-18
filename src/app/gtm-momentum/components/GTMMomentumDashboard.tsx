@@ -184,7 +184,7 @@ export default function GTMMomentumDashboard() {
   const lastEvent = events[0];
   const lastActive = lastEvent
     ? new Date(lastEvent.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-    : '—';
+    : 'N/A';
   const streak = uniqueDays; // simplified: unique active days as streak proxy
 
   // Seed fallback data when no real events yet
@@ -243,7 +243,7 @@ export default function GTMMomentumDashboard() {
               </div>
               <h1 className="text-[22px] font-bold text-foreground tracking-tight">GTM Momentum</h1>
             </div>
-            <p className="text-[13px] text-muted-foreground">Your founder action analytics — see where you're building momentum</p>
+            <p className="text-[13px] text-muted-foreground">Your founder action analytics: see where you're building momentum</p>
           </div>
           {!hasData && (
             <span className="text-[11px] px-3 py-1.5 rounded-full bg-warning-bg text-warning border border-warning/30 font-medium">
@@ -315,9 +315,9 @@ export default function GTMMomentumDashboard() {
           )}
         </div>
 
-        {/* Feature Frequency + Engagement sections — 2-col bento */}
+        {/* Feature Frequency + Engagement sections: 2-col bento */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          {/* Feature frequency — wider */}
+          {/* Feature frequency: wider */}
           <div className="md:col-span-3 card-base p-5 shadow-card">
             <div className="mb-4">
               <h2 className="text-[15px] font-semibold text-foreground">Feature Usage Frequency</h2>
@@ -346,7 +346,7 @@ export default function GTMMomentumDashboard() {
             )}
           </div>
 
-          {/* Highest engagement sections — narrower */}
+          {/* Highest engagement sections: narrower */}
           <div className="md:col-span-2 card-base p-5 shadow-card flex flex-col">
             <div className="mb-4">
               <h2 className="text-[15px] font-semibold text-foreground">Highest Engagement</h2>
@@ -391,7 +391,7 @@ export default function GTMMomentumDashboard() {
           <div className="flex items-start justify-between mb-5">
             <div>
               <h2 className="text-[15px] font-semibold text-foreground">Action Heatmap</h2>
-              <p className="text-[12px] text-muted-foreground mt-0.5">When you're most active — by day of week and time of day</p>
+              <p className="text-[12px] text-muted-foreground mt-0.5">When you're most active: by day of week and time of day</p>
             </div>
           </div>
           {loading ? (

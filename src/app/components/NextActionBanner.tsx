@@ -17,7 +17,7 @@ export default function NextActionBanner() {
           </span>
         </div>
         <p className="text-[14px] font-semibold text-foreground">
-          You have 2 ICPs defined but no outreach experiments running. Start a cold email sequence targeting SaaS CTOs — your highest-fit ICP.
+          You have 2 ICPs defined but no outreach experiments running. Start a cold email sequence targeting SaaS CTOs, your highest-fit ICP.
         </p>
       </div>
       <Link

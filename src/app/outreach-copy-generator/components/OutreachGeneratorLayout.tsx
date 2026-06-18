@@ -39,19 +39,19 @@ Return ONLY valid JSON in this exact format (no markdown, no explanation):
 {
   "variants": [
     {
-      "label": "Variant A — [Hook Type]",
+      "label": "Variant A: [Hook Type]",
       "subject": "Subject line here (for emails only, omit for LinkedIn DM/Pitch Script)",
       "body": "Full copy body here with line breaks as \\n",
       "score": 85
     },
     {
-      "label": "Variant B — [Hook Type]",
+      "label": "Variant B: [Hook Type]",
       "subject": "Subject line here",
       "body": "Full copy body here",
       "score": 79
     },
     {
-      "label": "Variant C — [Hook Type]",
+      "label": "Variant C: [Hook Type]",
       "subject": "Subject line here",
       "body": "Full copy body here",
       "score": 72

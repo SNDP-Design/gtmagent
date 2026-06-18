@@ -11,7 +11,7 @@ const features = [
     id: 'feat-strategy',
     icon: Sparkles,
     title: 'AI Strategy Builder',
-    desc: 'Answer a few questions. Get a full GTM strategy — positioning, messaging, and a 90-day action plan.',
+    desc: 'Answer a few questions. Get a full GTM strategy: positioning, messaging, and a 90-day action plan.',
     span: 'col-span-2 row-span-1',
     accent: '#7C6FFF',
   },
@@ -27,7 +27,7 @@ const features = [
     id: 'feat-outreach',
     icon: Mail,
     title: 'Outreach Copy Generator',
-    desc: 'Cold emails, LinkedIn DMs, and follow-ups — written in your voice, optimized for replies.',
+    desc: 'Cold emails, LinkedIn DMs, and follow-ups written in your voice, optimized for replies.',
     span: 'col-span-1 row-span-1',
     accent: '#34D399',
   },
@@ -131,7 +131,7 @@ export default function LandingPage() {
           </h1>
 
           <p className="text-[17px] text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10">
-            GTM Fox is your AI co-pilot for go-to-market. Build your strategy, find your customers, write outreach that converts — all in one place.
+                      GTM Fox is your AI co-pilot for go-to-market. Build your strategy, find your customers, write outreach that converts, all in one place.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -235,7 +235,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <h3 className="text-[16px] font-bold text-foreground mb-1.5">AI Strategy Builder</h3>
-                  <p className="text-[13px] text-muted-foreground leading-relaxed">Answer a few questions. Get a full GTM strategy — positioning, messaging, and a 90-day action plan tailored to your startup stage.</p>
+                  <p className="text-[13px] text-muted-foreground leading-relaxed">Answer a few questions. Get a full GTM strategy: positioning, messaging, and a 90-day action plan tailored to your startup stage.</p>
                 </div>
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function LandingPage() {
                   <Mail size={16} className="text-positive" />
                 </div>
                 <h3 className="text-[14px] font-bold text-foreground mb-1">Outreach Copy Generator</h3>
-                <p className="text-[12px] text-muted-foreground leading-relaxed">Cold emails, LinkedIn DMs, and follow-ups — written in your voice.</p>
+                <p className="text-[12px] text-muted-foreground leading-relaxed">Cold emails, LinkedIn DMs, and follow-ups written in your voice.</p>
               </div>
             </div>
 
@@ -292,7 +292,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <h3 className="text-[16px] font-bold text-foreground">GTM Momentum Dashboard</h3>
-                  <p className="text-[13px] text-muted-foreground">See your progress in real-time. KPIs, milestones, and AI-suggested next actions — all in one view.</p>
+                  <p className="text-[13px] text-muted-foreground">See your progress in real-time. KPIs, milestones, and AI-suggested next actions, all in one view.</p>
                 </div>
               </div>
               <div className="hidden md:flex items-center gap-3 flex-shrink-0">
@@ -405,7 +405,7 @@ export default function LandingPage() {
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#fff" fillOpacity="0.9"/>
                   <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#fff" fillOpacity="0.9"/>
                 </svg>
-                Continue with Google — it's free
+                Continue with Google, it's free
               </Link>
               <p className="text-[12px] text-muted-foreground mt-4">No credit card · Cancel anytime</p>
             </div>

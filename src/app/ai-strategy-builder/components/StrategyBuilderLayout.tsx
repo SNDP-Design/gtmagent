@@ -17,7 +17,7 @@ const initialSections: StrategySection[] = [
     title: 'Positioning Statement',
     status: 'complete',
     content:
-      'GTMAgent is the AI-powered GTM workspace for first-time solo founders who need to go from zero to first customers without a marketing team. Unlike generic CRM tools or strategy consultants, GTMAgent guides the founder through every step — strategy, ICP, outreach, and experiments — in one place.',
+      'GTMAgent is the AI-powered GTM workspace for first-time solo founders who need to go from zero to first customers without a marketing team. Unlike generic CRM tools or strategy consultants, GTMAgent guides the founder through every step: strategy, ICP, outreach, and experiments, all in one place.',
   },
   {
     id: 'sec-icp',
@@ -31,7 +31,7 @@ const initialSections: StrategySection[] = [
     title: 'Distribution Channels',
     status: 'complete',
     content:
-      'Priority channels: (1) LinkedIn cold outreach to CTOs and VPs of Eng at 10–200 person SaaS companies. (2) Warm introductions via existing network — highest conversion. (3) IndieHackers community posts and comments. Secondary channels: Cold email sequences, Twitter/X founder community engagement.',
+      'Priority channels: (1) LinkedIn cold outreach to CTOs and VPs of Eng at 10–200 person SaaS companies. (2) Warm introductions via existing network (highest conversion). (3) IndieHackers community posts and comments. Secondary channels: Cold email sequences, Twitter/X founder community engagement.',
   },
   {
     id: 'sec-pricing',

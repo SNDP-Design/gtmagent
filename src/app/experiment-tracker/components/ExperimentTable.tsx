@@ -295,7 +295,7 @@ export default function ExperimentTable() {
                           <button
                             onClick={() => handleDeleteExperiment(exp.id, exp.name)}
                             className="p-1.5 rounded-lg text-muted-foreground hover:text-negative hover:bg-negative-bg transition-all duration-150"
-                            title="Delete experiment — this cannot be undone"
+                            title="Delete experiment (this cannot be undone)"
                           >
                             <Trash2 size={13} />
                           </button>
@@ -332,7 +332,7 @@ export default function ExperimentTable() {
                 <input
                   {...register('name', { required: 'Experiment name is required' })}
                   className="input-base text-[13px]"
-                  placeholder="e.g. LinkedIn DM — SaaS CTOs (Problem-Led)"
+                  placeholder="e.g. LinkedIn DM: SaaS CTOs (Problem-Led)"
                 />
                 {errors.name && <p className="text-negative text-[11px] mt-1">{errors.name.message}</p>}
               </div>

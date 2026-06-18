@@ -20,11 +20,11 @@ interface SignUpFormProps {
 }
 
 const stages = [
-  'Idea stage — no product yet',
+  'Idea stage: no product yet',
   'Building MVP',
-  'MVP done — looking for first customers',
-  'Pre-revenue — have users, no paying customers',
-  'Early revenue — 1–10 paying customers',
+  'MVP done: looking for first customers',
+  'Pre-revenue: have users, no paying customers',
+  'Early revenue: 1–10 paying customers',
 ];
 
 export default function SignUpForm({ onSwitchToLogin }: SignUpFormProps) {
@@ -96,7 +96,7 @@ export default function SignUpForm({ onSwitchToLogin }: SignUpFormProps) {
     <div className="fade-in">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-foreground">Create your workspace</h2>
-        <p className="text-[13px] text-muted-foreground mt-1">Free to start — no credit card required</p>
+        <p className="text-[13px] text-muted-foreground mt-1">Free to start, no credit card required</p>
       </div>
 
       {/* Social auth */}
