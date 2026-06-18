@@ -9,7 +9,7 @@ export default function OutreachCopyGeneratorPage() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Outreach Copy Generator</h1>
           <p className="text-[13px] text-muted-foreground mt-1">
-            AI-written cold emails, LinkedIn DMs, and pitch scripts tailored to your ICP
+            AI-written cold emails, LinkedIn DMs, and pitch scripts — tailored to your ICP
           </p>
         </div>
         <OutreachGeneratorLayout />

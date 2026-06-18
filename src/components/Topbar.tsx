@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Bell, Search, HelpCircle, ChevronDown } from 'lucide-react';
 
 const notifications = [
-  { id: 'notif-1', text: 'Experiment "LinkedIn DM: SaaS CTOs" reached 50 sends', time: '2h ago', unread: true },
+  { id: 'notif-1', text: 'Experiment "LinkedIn DM — SaaS CTOs" reached 50 sends', time: '2h ago', unread: true },
   { id: 'notif-2', text: 'AI Strategy Builder: Section 3 ready for review', time: '5h ago', unread: true },
   { id: 'notif-3', text: 'Your cold email campaign hit 18% reply rate 🎉', time: '1d ago', unread: false },
 ];

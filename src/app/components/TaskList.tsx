@@ -4,7 +4,7 @@ import { CheckSquare, Square, Plus, AlertTriangle } from 'lucide-react';
 
 const initialTasks = [
   { id: 'task-1', text: 'Follow up with 8 LinkedIn DMs sent Monday', done: false, priority: 'high', dueLabel: 'Today' },
-  { id: 'task-2', text: 'Refine cold email subject line: test 3 variants', done: false, priority: 'high', dueLabel: 'Today' },
+  { id: 'task-2', text: 'Refine cold email subject line — test 3 variants', done: false, priority: 'high', dueLabel: 'Today' },
   { id: 'task-3', text: 'Add competitor analysis to strategy doc', done: true, priority: 'medium', dueLabel: 'Done' },
   { id: 'task-4', text: 'Research 20 new SaaS CTO prospects on LinkedIn', done: false, priority: 'medium', dueLabel: 'Tomorrow' },
   { id: 'task-5', text: 'Book product demo with Priya Sharma (warm intro)', done: false, priority: 'high', dueLabel: 'Jun 19' },

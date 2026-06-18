@@ -10,7 +10,7 @@ export default function AIStrategyBuilderPage() {
           <div>
             <h1 className="text-2xl font-bold text-foreground">AI Strategy Builder</h1>
             <p className="text-[13px] text-muted-foreground mt-1">
-              Answer a few questions and your AI co-pilot builds a tailored GTM strategy in real time
+              Answer a few questions — your AI co-pilot builds a tailored GTM strategy in real time
             </p>
           </div>
           <div className="flex items-center gap-2">

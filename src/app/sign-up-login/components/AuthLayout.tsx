@@ -50,7 +50,7 @@ export default function AuthLayout() {
               Your personal<br />GTM co-pilot
             </h1>
             <p className="text-white/70 text-[15px] leading-relaxed">
-              First-time founder? GTM Fox guides you from zero to first customers: strategy, outreach, experiments, and progress in one place.
+              First-time founder? GTM Fox guides you from zero to first customers — strategy, outreach, experiments, and progress in one place.
             </p>
           </div>
 

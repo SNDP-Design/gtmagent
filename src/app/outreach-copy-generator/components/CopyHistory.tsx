@@ -117,7 +117,7 @@ export default function CopyHistory() {
                       <button
                         onClick={() => handleDelete(item.id, item.label)}
                         className="p-1.5 rounded-lg text-muted-foreground hover:text-negative hover:bg-negative-bg transition-all duration-150"
-                        title="Delete copy (this cannot be undone)"
+                        title="Delete copy — this cannot be undone"
                       >
                         <Trash2 size={14} />
                       </button>

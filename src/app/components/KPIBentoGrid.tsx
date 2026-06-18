@@ -109,7 +109,7 @@ export default function KPIBentoGrid() {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
-      {/* Hero card: spans 2 cols */}
+      {/* Hero card — spans 2 cols */}
       {hero && (
         <div className={`col-span-2 card-base p-5 shadow-card ${hero.alert ? 'border-negative/30 bg-negative-bg/30' : ''}`}>
           <div className="flex items-start justify-between mb-4">
