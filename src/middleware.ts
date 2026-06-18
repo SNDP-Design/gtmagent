@@ -18,7 +18,7 @@ function injectTokenFromHeader(request: NextRequest): void {
 const PROTECTED_ROUTES: string[] = [];
 
 // Public routes (no auth needed)
-const PUBLIC_ROUTES = ['/', '/sign-up-login', '/auth/callback'];
+const PUBLIC_ROUTES = ['/', '/auth/callback'];
 
 export async function middleware(request: NextRequest) {
   injectTokenFromHeader(request);

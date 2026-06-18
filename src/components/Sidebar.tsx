@@ -2,19 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
-import {
-  LayoutDashboard,
-  Sparkles,
-  Users,
-  Mail,
-  FlaskConical,
-  ChevronLeft,
-  ChevronRight,
-  Settings,
-  LogOut,
-  Zap,
-  TrendingUp,
-} from 'lucide-react';
+import { LayoutDashboard, Sparkles, Users, Mail, FlaskConical, ChevronLeft, ChevronRight, Settings, Zap, TrendingUp,  } from 'lucide-react';
 import Icon from '@/components/ui/AppIcon';
 
 
@@ -124,14 +112,6 @@ export default function Sidebar({ currentPath }: SidebarProps) {
         >
           <Settings size={18} className="flex-shrink-0" />
           {!collapsed && <span className="text-[13px] font-medium">Settings</span>}
-        </Link>
-        <Link
-          href="/sign-up-login"
-          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg nav-item-inactive transition-all duration-150 ${collapsed ? 'justify-center' : ''}`}
-          title={collapsed ? 'Sign Out' : undefined}
-        >
-          <LogOut size={18} className="flex-shrink-0" />
-          {!collapsed && <span className="text-[13px] font-medium">Sign Out</span>}
         </Link>
 
         {!collapsed && (

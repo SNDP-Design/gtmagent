@@ -1,6 +1,5 @@
-import React from 'react';
-import AuthLayout from './components/AuthLayout';
+import { redirect } from 'next/navigation';
 
 export default function SignUpLoginPage() {
-  return <AuthLayout />;
+  redirect('/');
 }
