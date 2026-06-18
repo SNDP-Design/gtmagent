@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
-import { Sparkles, Target, FlaskConical, Mail, ArrowRight, CheckCircle, TrendingUp, Zap, Users, BarChart3, MessageSquare } from 'lucide-react';
+import { Sparkles, Target, FlaskConical, Mail, ArrowRight, CheckCircle, TrendingUp, Zap, Users, BarChart3, MessageSquare, ChevronRight, Lightbulb, Search, PenLine, TestTube2, Activity } from 'lucide-react';
 import Icon from '@/components/ui/AppIcon';
 
 
@@ -73,6 +73,136 @@ const stats = [
   { id: 'stat-2', value: '18%', label: 'Avg outreach reply rate' },
   { id: 'stat-3', value: '3 weeks', label: 'Avg time to first customer' },
   { id: 'stat-4', value: '94%', label: 'Would recommend to a friend' },
+];
+
+const modules = [
+  {
+    id: 'mod-strategy',
+    number: '01',
+    icon: Lightbulb,
+    title: 'AI Strategy Builder',
+    tagline: 'Your full GTM strategy in under 10 minutes.',
+    accent: '#7C6FFF',
+    accentBg: 'bg-primary/10',
+    accentText: 'text-primary',
+    accentBorder: 'border-primary/30',
+    description:
+      'Most first-time founders waste months building the wrong product for the wrong market with the wrong message. The AI Strategy Builder fixes that before you burn runway.',
+    howItWorks: [
+      'Answer a short intake form about your product, stage, and target market.',
+      'GTM Fox\'s AI analyzes your inputs against thousands of successful GTM patterns.',
+      'You receive a structured strategy doc: positioning statement, core messaging, competitive differentiation, and a prioritized 90-day action plan.',
+    ],
+    bullets: [
+      'Positioning & messaging framework tailored to your niche',
+      '90-day GTM action plan with weekly milestones',
+      'Competitive differentiation analysis',
+      'Exportable strategy doc (PDF/CSV) to share with advisors',
+    ],
+    callout: 'Founders who start with a written GTM strategy are 3× more likely to hit their first revenue milestone within 90 days.',
+  },
+  {
+    id: 'mod-icp',
+    number: '02',
+    icon: Search,
+    title: 'ICP & Channel Finder',
+    tagline: 'Stop selling to everyone. Start selling to the right ones.',
+    accent: '#F97316',
+    accentBg: 'bg-accent/10',
+    accentText: 'text-accent',
+    accentBorder: 'border-accent/30',
+    description:
+      'Targeting the wrong customer is the #1 reason early-stage startups stall. The ICP & Channel Finder gives you a data-backed profile of your ideal buyer and ranks the channels most likely to reach them.',
+    howItWorks: [
+      'Describe your product, the problem it solves, and any early customers you\'ve spoken to.',
+      'The AI builds a detailed Ideal Customer Profile: job title, company size, pain points, buying triggers, and objections.',
+      'It then scores every major GTM channel — LinkedIn, cold email, Product Hunt, communities, content, paid ads — by fit percentage for your specific ICP.',
+    ],
+    bullets: [
+      'Detailed ICP card: demographics, psychographics, pain points, and triggers',
+      'Channel fit scores ranked from highest to lowest',
+      'Radar chart visualization of channel strengths',
+      'Multiple ICP profiles for different customer segments',
+    ],
+    callout: 'Users who define their ICP before outreach see an average 4× improvement in reply rates compared to broad targeting.',
+  },
+  {
+    id: 'mod-outreach',
+    number: '03',
+    icon: PenLine,
+    title: 'Outreach Copy Generator',
+    tagline: 'Write outreach that actually gets replies.',
+    accent: '#34D399',
+    accentBg: 'bg-positive/10',
+    accentText: 'text-positive',
+    accentBorder: 'border-positive/30',
+    description:
+      'Cold outreach fails when it sounds like a template. The Outreach Copy Generator writes personalized, high-converting messages in your voice — for every channel and every stage of the funnel.',
+    howItWorks: [
+      'Select your channel (cold email, LinkedIn DM, follow-up, or referral ask) and target persona.',
+      'Paste in context about the prospect or let GTM Fox pull from your ICP profile.',
+      'The AI generates 3 copy variants per request, each with a different hook, tone, and CTA — ready to send or tweak.',
+    ],
+    bullets: [
+      'Cold email sequences (intro, follow-up 1, follow-up 2)',
+      'LinkedIn connection requests and DMs',
+      'Referral and warm intro scripts',
+      'Multiple variants per generation for A/B testing',
+      'Full copy history saved for reuse and iteration',
+    ],
+    callout: 'GTM Fox users report an average outreach reply rate of 18% — compared to the industry average of 2–4% for generic cold email.',
+  },
+  {
+    id: 'mod-experiments',
+    number: '04',
+    icon: TestTube2,
+    title: 'Experiment Tracker',
+    tagline: 'Run GTM experiments like a scientist, not a guesser.',
+    accent: '#60A5FA',
+    accentBg: 'bg-info/10',
+    accentText: 'text-info',
+    accentBorder: 'border-info/30',
+    description:
+      'The fastest-growing startups treat GTM like a series of experiments — not a one-time plan. The Experiment Tracker gives you a structured system to log, measure, and learn from every GTM bet you make.',
+    howItWorks: [
+      'Log an experiment: define your hypothesis, channel, target segment, and success metric.',
+      'Track results as they come in — reply rates, conversion rates, cost per reply, and revenue attributed.',
+      'GTM Fox surfaces ROI metrics, channel efficiency scores, and win-rate trends so you know exactly what to double down on.',
+    ],
+    bullets: [
+      'Structured experiment log with hypothesis and outcome fields',
+      'ROI metrics: cost per reply, campaign ROI, revenue attributed',
+      'Channel efficiency radar chart and win-rate trend lines',
+      'Export experiment results and recommendations as PDF or CSV',
+    ],
+    callout: 'Founders who run 5+ structured GTM experiments in their first 60 days find their best-performing channel 2× faster than those who don\'t.',
+  },
+  {
+    id: 'mod-dashboard',
+    number: '05',
+    icon: Activity,
+    title: 'Progress Dashboard',
+    tagline: 'See your entire GTM motion in one view.',
+    accent: '#7C6FFF',
+    accentBg: 'bg-primary/10',
+    accentText: 'text-primary',
+    accentBorder: 'border-primary/30',
+    description:
+      'You can\'t improve what you can\'t see. The Progress Dashboard (GTM Momentum) gives you a real-time pulse on your go-to-market health — from KPIs and milestones to AI-suggested next actions.',
+    howItWorks: [
+      'All activity across Strategy Builder, ICP Finder, Outreach Generator, and Experiment Tracker feeds into the dashboard automatically.',
+      'Your GTM Score (0–100) updates in real-time based on strategy completeness, experiment velocity, and outreach activity.',
+      'The AI surfaces your most important next action every day — so you always know what to work on to move the needle.',
+    ],
+    bullets: [
+      'Live GTM Score reflecting overall go-to-market health',
+      'KPI bento grid: experiments active, outreach sent, customers acquired',
+      'Milestone tracker with completion timeline',
+      'AI-generated next-action recommendations updated daily',
+      'Activity heatmap and momentum charts',
+    ],
+    callout: 'Founders who check their GTM dashboard daily are 60% more likely to hit their 90-day milestones — because visibility creates accountability.',
+  },
 ];
 
 export default function LandingPage() {
@@ -297,6 +427,99 @@ export default function LandingPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      {/* Module Deep Dive */}
+      <section id="modules" className="py-24 px-6 bg-secondary/20">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-[12px] font-bold uppercase tracking-widest text-primary mb-3">How it works</p>
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold leading-tight mb-4">
+              Five modules. One complete<br />go-to-market system.
+            </h2>
+            <p className="text-[15px] text-muted-foreground max-w-2xl mx-auto">
+              Each module is designed to solve a specific GTM problem. Together, they give you everything you need to find customers and grow — without the guesswork.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {modules?.map((mod, idx) => {
+              const ModIcon = mod?.icon;
+              const isEven = idx % 2 === 0;
+              return (
+                <div
+                  key={mod?.id}
+                  className={`rounded-2xl bg-card border ${mod?.accentBorder} overflow-hidden`}
+                >
+                  {/* Module header */}
+                  <div className={`px-8 pt-8 pb-6 border-b border-border/40`}>
+                    <div className="flex items-start gap-5">
+                      <div className="flex-shrink-0">
+                        <div className={`w-12 h-12 rounded-2xl ${mod?.accentBg} flex items-center justify-center`}>
+                          <ModIcon size={22} className={mod?.accentText} />
+                        </div>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-1.5">
+                          <span className={`text-[11px] font-bold uppercase tracking-widest ${mod?.accentText} opacity-60`}>Module {mod?.number}</span>
+                        </div>
+                        <h3 className="text-[22px] font-extrabold text-foreground leading-tight mb-1">{mod?.title}</h3>
+                        <p className={`text-[14px] font-semibold ${mod?.accentText}`}>{mod?.tagline}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Module body */}
+                  <div className="px-8 py-7 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Left: description + how it works */}
+                    <div>
+                      <p className="text-[14px] text-muted-foreground leading-relaxed mb-6">{mod?.description}</p>
+                      <p className="text-[12px] font-bold uppercase tracking-widest text-foreground/50 mb-3">How it works</p>
+                      <ol className="space-y-3">
+                        {mod?.howItWorks?.map((step, i) => (
+                          <li key={`${mod?.id}-step-${i}`} className="flex items-start gap-3">
+                            <span className={`flex-shrink-0 w-5 h-5 rounded-full ${mod?.accentBg} ${mod?.accentText} text-[11px] font-bold flex items-center justify-center mt-0.5`}>
+                              {i + 1}
+                            </span>
+                            <p className="text-[13px] text-muted-foreground leading-relaxed">{step}</p>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    {/* Right: feature bullets + callout */}
+                    <div>
+                      <p className="text-[12px] font-bold uppercase tracking-widest text-foreground/50 mb-3">What you get</p>
+                      <ul className="space-y-2.5 mb-6">
+                        {mod?.bullets?.map((b, i) => (
+                          <li key={`${mod?.id}-bullet-${i}`} className="flex items-start gap-2.5">
+                            <CheckCircle size={14} className={`${mod?.accentText} flex-shrink-0 mt-0.5`} />
+                            <span className="text-[13px] text-foreground/80">{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {/* Callout box */}
+                      <div className={`rounded-xl ${mod?.accentBg} border ${mod?.accentBorder} p-4`}>
+                        <div className="flex items-start gap-2.5">
+                          <Zap size={14} className={`${mod?.accentText} flex-shrink-0 mt-0.5`} />
+                          <p className={`text-[12px] leading-relaxed ${mod?.accentText} font-medium`}>{mod?.callout}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Module footer CTA */}
+                  <div className="px-8 pb-7">
+                    <Link
+                      href="/dashboard"
+                      className={`inline-flex items-center gap-1.5 text-[13px] font-semibold ${mod?.accentText} hover:opacity-80 transition-opacity`}
+                    >
+                      Try {mod?.title} free
+                      <ChevronRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
