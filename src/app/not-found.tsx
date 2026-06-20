@@ -26,9 +26,9 @@ export default function NotFound() {
                     </div>
                 </div>
 
-                <h2 className="text-2xl font-medium text-onBackground mb-2">Page Not Found</h2>
-                <p className="text-onBackground/70 mb-8">
-                    The page you're looking for doesn't exist. Let's get you back!
+                <h2 className="text-2xl font-medium text-foreground mb-2">Page Not Found</h2>
+                <p className="text-muted-foreground mb-8">
+                    The page you&apos;re looking for doesn&apos;t exist. Let&apos;s get you back!
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -42,7 +42,7 @@ export default function NotFound() {
 
                     <button
                         onClick={handleGoHome}
-                        className="inline-flex items-center justify-center gap-2 border border-border bg-background text-foreground px-6 py-3 rounded-lg font-medium hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
+                        className="inline-flex items-center justify-center gap-2 border border-border bg-background text-foreground px-6 py-3 rounded-lg font-medium hover:bg-muted transition-colors duration-200"
                     >
                         <Icon name="HomeIcon" size={16} />
                         Back to Home
