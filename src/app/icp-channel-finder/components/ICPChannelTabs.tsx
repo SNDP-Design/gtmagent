@@ -5,6 +5,7 @@ import ChannelTab from './ChannelTab';
 import { Sparkles, Loader2, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { geminiChatCompletion } from '@/lib/ai/geminiWithFallback';
 import { icpProfileService } from '@/lib/services/icpProfileService';
+import { useICPProfilesRealtime } from '@/lib/hooks/useICPProfilesRealtime';
 import { toast } from 'sonner';
 
 const tabs = [
@@ -18,6 +19,7 @@ export default function ICPChannelTabs() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [productDesc, setProductDesc] = useState('');
   const [targetMarket, setTargetMarket] = useState('');
+  const { reload } = useICPProfilesRealtime();
 
   const handleGenerateICP = async () => {
     if (!productDesc.trim()) {
@@ -93,8 +95,8 @@ Rules: fitScore between 60-97, 3 distinct profiles with different roles/stages, 
       setShowGenerator(false);
       setProductDesc('');
       setTargetMarket('');
-      // Reload the page to show new profiles
-      window.location.reload();
+      // Reload profiles via realtime hook instead of full page reload
+      reload();
     } catch (err: any) {
       toast.error('ICP generation failed: ' + (err.message || 'Please try again.'));
     } finally {

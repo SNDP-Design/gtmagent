@@ -16,6 +16,7 @@ import { founderEventService, FounderEvent } from '@/lib/services/founderEventSe
 import Icon from '@/components/ui/AppIcon';
 
 
+
 const CompletionTimelineInner = dynamic(
   () => import('./CompletionTimelineInner'),
   { ssr: false, loading: () => <div className="animate-pulse bg-muted rounded-xl" style={{ minHeight: 200 }} /> }

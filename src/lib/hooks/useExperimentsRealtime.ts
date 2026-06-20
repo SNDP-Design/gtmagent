@@ -35,6 +35,9 @@ export function useExperimentsRealtime() {
       startDate: row.start_date,
       lastUpdated: row.last_updated,
       createdAt: row.created_at,
+      costPerMessage: row.cost_per_message ?? 0,
+      revenueAttributed: row.revenue_attributed ?? 0,
+      winRate: row.win_rate ?? 0,
     };
   }
 

@@ -41,7 +41,12 @@ interface NewExperimentForm {
   costPerMessage: string;
 }
 
-export default function ExperimentTable() {
+interface ExperimentTableProps {
+  openModal?: boolean;
+  onModalClose?: () => void;
+}
+
+export default function ExperimentTable({ openModal, onModalClose }: ExperimentTableProps) {
   const { experiments: data, isLoading, reload } = useExperimentsRealtime();
   const [sortKey, setSortKey] = useState<SortKey>('sent');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
@@ -51,6 +56,19 @@ export default function ExperimentTable() {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<NewExperimentForm>();
+
+  // Sync external openModal prop
+  React.useEffect(() => {
+    if (openModal) {
+      setShowModal(true);
+    }
+  }, [openModal]);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    reset();
+    onModalClose?.();
+  };
 
   const handleSort = (key: SortKey) => {
     if (sortKey === key) {
@@ -78,7 +96,6 @@ export default function ExperimentTable() {
     const ok = await experimentService.delete(id);
     if (ok) {
       toast.success(`"${name}" deleted`);
-      // Realtime subscription will remove the row; reload as fallback
       reload();
     } else {
       toast.error('Failed to delete experiment');
@@ -98,15 +115,12 @@ export default function ExperimentTable() {
       });
       if (newExp) {
         toast.success('Experiment logged successfully');
-        setShowModal(false);
-        reset();
-        // Track founder action
+        handleCloseModal();
         founderEventService.log('experiment_logged', 'experiments', {
           experiment_name: formData.name,
           channel: formData.channel,
           icp_target: formData.icpTarget,
         });
-        // Realtime subscription will add the row automatically
       } else {
         toast.error('Failed to log experiment');
       }
@@ -338,12 +352,12 @@ export default function ExperimentTable() {
       {/* New Experiment Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-foreground/30 backdrop-blur-sm" onClick={() => setShowModal(false)} />
+          <div className="absolute inset-0 bg-foreground/30 backdrop-blur-sm" onClick={handleCloseModal} />
           <div className="relative bg-card rounded-2xl shadow-modal w-full max-w-lg border border-border fade-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
               <h3 className="text-[16px] font-bold text-foreground">Log New Experiment</h3>
               <button
-                onClick={() => setShowModal(false)}
+                onClick={handleCloseModal}
                 className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-150"
               >
                 <X size={16} />
@@ -413,7 +427,7 @@ export default function ExperimentTable() {
               <div className="flex gap-3 pt-2">
                 <button
                   type="button"
-                  onClick={() => setShowModal(false)}
+                  onClick={handleCloseModal}
                   className="btn-secondary flex-1 py-2.5"
                 >
                   Cancel
