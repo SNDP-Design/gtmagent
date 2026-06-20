@@ -19,14 +19,16 @@ type ApiMessage = {
 
 const SYSTEM_PROMPT = `You are a GTM Co-Pilot — an expert go-to-market strategist helping early-stage startup founders build their GTM strategy. You are concise, direct, and practical. You ask one focused question at a time to gather context, then provide actionable advice. You help founders with: positioning, ICP definition, pricing strategy, channel selection, outreach tactics, and 90-day launch plans. Use **bold** for key terms and recommendations. Keep responses under 150 words unless the founder asks for detail.`;
 
-const initialMessages: Message[] = [
-  {
-    id: 'msg-1',
-    role: 'ai',
-    text: "Hi! I'm your GTM Co-Pilot powered by Gemini. Tell me about your startup — what does it do and who is it for?",
-    timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
-  },
-];
+function getInitialMessages(): Message[] {
+  return [
+    {
+      id: 'msg-1',
+      role: 'ai',
+      text: "Hi! I'm your GTM Co-Pilot powered by Gemini. Tell me about your startup — what does it do and who is it for?",
+      timestamp: '',
+    },
+  ];
+}
 
 interface ChatPanelProps {
   sections: StrategySection[];
@@ -36,7 +38,7 @@ interface ChatPanelProps {
 }
 
 export default function ChatPanel({ sections, activeSection, onSectionUpdate, onUnlockSection }: ChatPanelProps) {
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
+  const [messages, setMessages] = useState<Message[]>(getInitialMessages);
   const [apiHistory, setApiHistory] = useState<ApiMessage[]>([]);
   const [input, setInput] = useState('');
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -44,6 +46,14 @@ export default function ChatPanel({ sections, activeSection, onSectionUpdate, on
   const { response, isLoading, error, sendMessage } = useGeminiChat(true);
 
   const [pendingAiMsg, setPendingAiMsg] = useState<string | null>(null);
+
+  // Set initial message timestamp on client only to avoid hydration mismatch
+  useEffect(() => {
+    const ts = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+    setMessages((prev) =>
+      prev.map((m) => (m.id === 'msg-1' && m.timestamp === '' ? { ...m, timestamp: ts } : m))
+    );
+  }, []);
 
   useEffect(() => {
     if (error) {
@@ -109,7 +119,7 @@ export default function ChatPanel({ sections, activeSection, onSectionUpdate, on
   };
 
   const handleRestart = () => {
-    setMessages(initialMessages);
+    setMessages(getInitialMessages());
     setApiHistory([]);
     setPendingAiMsg(null);
     setInput('');
@@ -155,9 +165,11 @@ export default function ChatPanel({ sections, activeSection, onSectionUpdate, on
               }`}
             >
               <p dangerouslySetInnerHTML={{ __html: msg.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
-              <p className={`text-[10px] mt-1 ${msg.role === 'ai' ? 'text-muted-foreground' : 'text-white/60'}`}>
-                {msg.timestamp}
-              </p>
+              {msg.timestamp && (
+                <p className={`text-[10px] mt-1 ${msg.role === 'ai' ? 'text-muted-foreground' : 'text-white/60'}`}>
+                  {msg.timestamp}
+                </p>
+              )}
             </div>
           </div>
         ))}
