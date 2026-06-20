@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { ChevronUp, ChevronDown, Play, RotateCcw, Trash2, Edit3, Plus, X, Loader2 } from 'lucide-react';
+import { ChevronUp, ChevronDown, Play, RotateCcw, Trash2, Edit3, Plus, X, Loader2, DollarSign } from 'lucide-react';
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
 import { experimentService, type ExperimentStatus, type SignalStrength } from '@/lib/services/experimentService';
@@ -38,6 +38,7 @@ interface NewExperimentForm {
   channel: string;
   icpTarget: string;
   hypothesis: string;
+  costPerMessage: string;
 }
 
 export default function ExperimentTable() {
@@ -93,6 +94,7 @@ export default function ExperimentTable() {
         channel: formData.channel,
         icpTarget: formData.icpTarget,
         hypothesis: formData.hypothesis,
+        costPerMessage: formData.costPerMessage,
       });
       if (newExp) {
         toast.success('Experiment logged successfully');
@@ -172,6 +174,8 @@ export default function ExperimentTable() {
                   { label: 'Replies', key: 'replies' as SortKey, sortable: true },
                   { label: 'Conv.', key: 'conversions' as SortKey, sortable: true },
                   { label: 'Reply %', key: null, sortable: false },
+                  { label: 'Cost/Reply', key: null, sortable: false },
+                  { label: 'Win Rate', key: null, sortable: false },
                   { label: 'Signal', key: null, sortable: false },
                   { label: 'Actions', key: null, sortable: false },
                 ].map((col) => (
@@ -193,7 +197,7 @@ export default function ExperimentTable() {
             <tbody>
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={11} className="px-4 py-12 text-center">
+                  <td colSpan={13} className="px-4 py-12 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
                         <Plus size={20} className="text-muted-foreground" />
@@ -211,6 +215,13 @@ export default function ExperimentTable() {
                   const replyRate = exp.sent > 0 ? ((exp.replies / exp.sent) * 100).toFixed(1) : '—';
                   const signalKey = exp.signal === 'None' ? '—' : exp.signal;
                   const sig = signalConfig[signalKey] || signalConfig['—'];
+                  const totalCost = (exp.costPerMessage || 0) * (exp.sent || 0);
+                  const costPerReply = exp.replies > 0 && totalCost > 0
+                    ? `$${(totalCost / exp.replies).toFixed(2)}`
+                    : '—';
+                  const winRate = exp.winRate > 0
+                    ? exp.winRate
+                    : exp.sent > 0 ? (exp.conversions / exp.sent) * 100 : 0;
                   return (
                     <tr
                       key={exp.id}
@@ -248,6 +259,19 @@ export default function ExperimentTable() {
                       <td className="px-4 py-3">
                         <span className={`text-[13px] font-bold tabular-nums ${replyRate !== '—' ? (parseFloat(replyRate) >= 15 ? 'text-positive' : parseFloat(replyRate) >= 8 ? 'text-info' : 'text-warning') : 'text-muted-foreground'}`}>
                           {replyRate !== '—' ? `${replyRate}%` : '—'}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <div className="flex items-center gap-1">
+                          <DollarSign size={11} className={costPerReply !== '—' ? 'text-warning' : 'text-muted-foreground'} />
+                          <span className={`text-[12px] font-semibold tabular-nums ${costPerReply !== '—' ? 'text-warning' : 'text-muted-foreground'}`}>
+                            {costPerReply}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <span className={`text-[12px] font-bold tabular-nums ${winRate >= 10 ? 'text-positive' : winRate >= 3 ? 'text-info' : winRate > 0 ? 'text-warning' : 'text-muted-foreground'}`}>
+                          {winRate > 0 ? `${winRate.toFixed(1)}%` : '—'}
                         </span>
                       </td>
                       <td className="px-4 py-3">
@@ -354,6 +378,24 @@ export default function ExperimentTable() {
                     ))}
                   </select>
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-[12px] font-semibold text-foreground mb-1.5">
+                  Cost per Message <span className="text-muted-foreground font-normal">(optional, for ROI tracking)</span>
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-[13px]">$</span>
+                  <input
+                    {...register('costPerMessage')}
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    className="input-base text-[13px] pl-7"
+                    placeholder="0.00"
+                  />
+                </div>
+                <p className="text-[11px] text-muted-foreground mt-1">e.g. tool cost ÷ messages sent. Used to calculate cost-per-reply and ROI.</p>
               </div>
 
               <div>

@@ -3,6 +3,8 @@ import AppLayout from '@/components/AppLayout';
 import ExperimentSummaryCards from './components/ExperimentSummaryCards';
 import ExperimentChart from './components/ExperimentChart';
 import ExperimentTable from './components/ExperimentTable';
+import ROIMetricsPanel from './components/ROIMetricsPanel';
+import ExperimentExportButton from './components/ExperimentExportButton';
 
 export default function ExperimentTrackerPage() {
   return (
@@ -15,14 +17,28 @@ export default function ExperimentTrackerPage() {
               Log GTM experiments, track results, and double down on what works
             </p>
           </div>
-          <button className="btn-primary px-4 py-2.5 flex items-center gap-2 text-[13px]">
-            + Log New Experiment
-          </button>
+          <div className="flex items-center gap-2">
+            <ExperimentExportButton />
+            <button className="btn-primary px-4 py-2.5 flex items-center gap-2 text-[13px]">
+              + Log New Experiment
+            </button>
+          </div>
         </div>
 
         <ExperimentSummaryCards />
 
         <ExperimentChart />
+
+        {/* ROI Metrics: cost-per-reply, channel efficiency, win-rate trends */}
+        <div>
+          <div className="mb-3">
+            <h2 className="text-[15px] font-bold text-foreground">ROI & Optimization Metrics</h2>
+            <p className="text-[12px] text-muted-foreground mt-0.5">
+              Data-driven signals — cost efficiency, channel scores, and win-rate trends
+            </p>
+          </div>
+          <ROIMetricsPanel />
+        </div>
 
         <ExperimentTable />
       </div>

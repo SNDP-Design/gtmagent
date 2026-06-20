@@ -20,6 +20,9 @@ export interface Experiment {
   startDate: string;
   lastUpdated: string;
   createdAt: string;
+  costPerMessage: number;
+  revenueAttributed: number;
+  winRate: number;
 }
 
 function toExperiment(row: any): Experiment {
@@ -38,6 +41,9 @@ function toExperiment(row: any): Experiment {
     startDate: row.start_date,
     lastUpdated: row.last_updated,
     createdAt: row.created_at,
+    costPerMessage: row.cost_per_message ?? 0,
+    revenueAttributed: row.revenue_attributed ?? 0,
+    winRate: row.win_rate ?? 0,
   };
 }
 
@@ -78,12 +84,13 @@ export const experimentService = {
     }
   },
 
-  async create(exp: { name: string; channel: string; icpTarget: string; hypothesis: string }): Promise<Experiment | null> {
+  async create(exp: { name: string; channel: string; icpTarget: string; hypothesis: string; costPerMessage?: string | number }): Promise<Experiment | null> {
     const supabase = createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
 
     const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const costVal = exp.costPerMessage ? parseFloat(String(exp.costPerMessage)) : 0;
 
     try {
       const { data, error } = await supabase
@@ -101,6 +108,9 @@ export const experimentService = {
           signal: 'None',
           start_date: today,
           last_updated: '—',
+          cost_per_message: isNaN(costVal) ? 0 : costVal,
+          revenue_attributed: 0,
+          win_rate: 0,
         })
         .select()
         .single();

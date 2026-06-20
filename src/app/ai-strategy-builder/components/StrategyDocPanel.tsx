@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { CheckCircle2, Clock, Lock, ChevronDown, ChevronUp, RefreshCw, Download, Edit3, Save } from 'lucide-react';
 import type { StrategySection } from './StrategyBuilderLayout';
 import { toast } from 'sonner';
+import ExportReportModal from '@/components/ExportReportModal';
 
 interface StrategyDocPanelProps {
   sections: StrategySection[];
@@ -21,6 +22,7 @@ export default function StrategyDocPanel({ sections, activeSection, onSectionSel
   const [expanded, setExpanded] = useState<Set<string>>(new Set(['sec-positioning', 'sec-icp', 'sec-pricing']));
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editContent, setEditContent] = useState('');
+  const [exportOpen, setExportOpen] = useState(false);
 
   const toggleExpand = (id: string) => {
     setExpanded((prev) => {
@@ -42,7 +44,7 @@ export default function StrategyDocPanel({ sections, activeSection, onSectionSel
   };
 
   const handleExport = () => {
-    toast.success('GTM Strategy exported as PDF');
+    setExportOpen(true);
   };
 
   return (
@@ -58,7 +60,7 @@ export default function StrategyDocPanel({ sections, activeSection, onSectionSel
           onClick={handleExport}
           className="btn-secondary px-3 py-2 flex items-center gap-1.5 text-[12px]"
         >
-          <Download size={14} /> Export PDF
+          <Download size={14} /> Export
         </button>
       </div>
 
@@ -149,6 +151,13 @@ export default function StrategyDocPanel({ sections, activeSection, onSectionSel
           );
         })}
       </div>
+
+      <ExportReportModal
+        open={exportOpen}
+        onClose={() => setExportOpen(false)}
+        strategySections={sections}
+        availableSections={['strategy', 'recommendations']}
+      />
     </div>
   );
 }
