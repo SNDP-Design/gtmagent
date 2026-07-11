@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
-import { LayoutDashboard, Sparkles, Users, Mail, FlaskConical, ChevronLeft, ChevronRight, Settings, Zap, TrendingUp,  } from 'lucide-react';
+import { LayoutDashboard, Sparkles, Users, Mail, FlaskConical, ChevronLeft, ChevronRight, Settings, Zap, TrendingUp } from 'lucide-react';
 import Icon from '@/components/ui/AppIcon';
+
 
 
 interface NavItem {

@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import AppLayout from '@/components/AppLayout';
 import ExperimentSummaryCards from './components/ExperimentSummaryCards';
 import ExperimentChart from './components/ExperimentChart';
@@ -7,6 +8,8 @@ import ROIMetricsPanel from './components/ROIMetricsPanel';
 import ExperimentExportButton from './components/ExperimentExportButton';
 
 export default function ExperimentTrackerPage() {
+  const [openLogModal, setOpenLogModal] = useState(false);
+
   return (
     <AppLayout currentPath="/experiment-tracker">
       <div className="space-y-6">
@@ -19,7 +22,10 @@ export default function ExperimentTrackerPage() {
           </div>
           <div className="flex items-center gap-2">
             <ExperimentExportButton />
-            <button className="btn-primary px-4 py-2.5 flex items-center gap-2 text-[13px]">
+            <button
+              onClick={() => setOpenLogModal(true)}
+              className="btn-primary px-4 py-2.5 flex items-center gap-2 text-[13px]"
+            >
               + Log New Experiment
             </button>
           </div>
@@ -40,7 +46,7 @@ export default function ExperimentTrackerPage() {
           <ROIMetricsPanel />
         </div>
 
-        <ExperimentTable />
+        <ExperimentTable openModal={openLogModal} onModalClose={() => setOpenLogModal(false)} />
       </div>
     </AppLayout>
   );
